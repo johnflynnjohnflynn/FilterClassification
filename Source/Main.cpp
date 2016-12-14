@@ -24,7 +24,7 @@
 
 //--------//--------//--------//--------//--------//--------//--------//--------
 
-    Filter Classification. (JUCE Machine Learning Hackathon 14/12/2016)
+    Filter Classification.
 
     Takes raw coefficients of a 2-point FIR filter and classifies it as...
     
