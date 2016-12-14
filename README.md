@@ -19,9 +19,6 @@ First attempt started with a basic training set...
     loPass.outputs  = {FilterType::isLoPass};
     noFilt.outputs  = {FilterType::noFilter};
     hiPass.outputs  = {FilterType::isHiPass};
-    trainingSet.add (loPass);
-    trainingSet.add (noFilt);
-    trainingSet.add (hiPass);
 
 But a filter of `{1.0, 0.49}` is classified as 'not a filter', even though this is quite a low pass filter (bass at +4dB, treble at -6dB).
 
@@ -33,8 +30,6 @@ So let's add some more specific training examples, we should only class as 'not 
     hiPass2.inputs = {1.0, -0.1};
     loPass2.outputs = {FilterType::isLoPass};
     hiPass2.outputs = {FilterType::isHiPass};
-    trainingSet.add (loPass2);
-    trainingSet.add (hiPass2);
 
 Good, but now filters with inverse coefficients don't yield proper results e.g. `{-1.0, -1.0}` should be low pass but is classed as high pass.
 
@@ -46,10 +41,8 @@ Let's add some more training data
     hiPass3.inputs = {-1.0,  1.0};
     loPass3.outputs = {FilterType::isLoPass};
     hiPass3.outputs = {FilterType::isHiPass};
-    trainingSet.add (loPass3);
-    trainingSet.add (hiPass3);
 
-Just a very simple application of JUCE's new `Classification` object.
+Just a very simple application of JUCE's new `Classification` object based on rapidmix.
 
 Full test output of the program
 ---
